@@ -17,45 +17,33 @@ header {
 	justify-content: center;
 	/* align-items: center; */
 }
-/* .main {
-	height: 10rem;
-	width: 100rem;
-	margin: auto;
-	background-color: aquamarine;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-} */
 .container {
+	/* background-color: blanchedalmond; */
+	/* border-style: solid; */
 	margin: auto;
-	background-color: blanchedalmond;
-	height: 20rem;
+	height: 30rem;
 	width: 80%;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	/* flex-wrap: wrap; */
-	border: 4px;
 	border-color: black;
 }
-#courselist_container {
-	height: 200px;
-	width: fit-content;
+.course_list {
+	/* margin-top: 5rem; */
+	height: 400px;
+	width: 20rem;
 	overflow: auto;
 	border-style: solid;
 }
 .selected_courses {
-	height: 200px;
-	width: fit-content;
+	/* margin-top: 5rem; */
+	height: 400px;
+	width: 20rem;
 	overflow: auto;
 	border-style: solid;
 }
 #courselist_container div:hover{
 	background-color:rgb(149, 227, 199);
-}
-hr {
-	color: black;
-	/* margin: 1em; */
 }
 p, span {
 	display: flex;
