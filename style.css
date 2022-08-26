@@ -1,0 +1,54 @@
+/*  css reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+h2 {
+	margin: 2rem;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+header {
+	/* background-color: green; */
+	margin: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.main {
+	height: 10rem;
+	width: 100rem;
+	margin: auto;
+	/* background-color: aquamarine; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.container {
+	margin: auto;
+	/* background-color: blanchedalmond; */
+	height: 20rem;
+	width: 60%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	/* flex-wrap: wrap; */
+	border: 4px;
+	border-color: black;
+}
+#courselist_container {
+	height: 200px;
+	width: 100%;
+	overflow: scroll;
+}
+
+hr {
+	color: black;
+	/* border-width: 2px; */
+}
+p, span {
+	display: flex;
+	justify-content: center;
+}
