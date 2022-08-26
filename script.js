@@ -16,7 +16,7 @@ const View = (() => {
 			tmp += `
 			<div>
 				<p>${courseList.courseName}</p>
-				<p>Course Type: ${courseList.required}</p>
+				<p>Course Type: ${courseList.required? 'Compulsory': 'Elective'}</p>
 				<p>Course Credit: ${courseList.credit}</p>
 			</div>
 			<hr>
@@ -24,6 +24,10 @@ const View = (() => {
 		});
 		return tmp;
 	};
+	// const totalCredit = () => {
+	// 	let credit = 0;
+	// 	for ()
+	// }
 
 	return {
 		domstr,
