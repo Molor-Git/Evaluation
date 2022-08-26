@@ -15,10 +15,11 @@ const View = (() => {
 		arr.forEach((courseList) => {
 			tmp += `
 			<div>
-				<p>System: ${courseList.courseName}</p>
+				<p>${courseList.courseName}</p>
 				<p>Course Type: ${courseList.required}</p>
 				<p>Course Credit: ${courseList.credit}</p>
 			</div>
+			<hr>
             `;
 		});
 		return tmp;
