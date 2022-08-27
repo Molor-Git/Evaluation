@@ -4,19 +4,21 @@ import { Api } from "./api/api.js";
 const View = (() => {
 	const domstr = {
 		courseContainer: "#courselist_container",
+		selectedCourses: ".selectedCourses",
 	};
 
 	const render = (ele, tmp) => {
 		ele.innerHTML = tmp;
+		// ele,innerHTML = selectedTmp;
 	};
 
 	const createTmp = (arr) => {
 		let tmp = "";
 		arr.forEach((courseList) => {
 			tmp += `
-			<div>
+			<div class="courslist_container">
 				<p>${courseList.courseName}</p>
-				<p>Course Type: ${courseList.required? 'Compulsory': 'Elective'}</p>
+				<p>Course Type: ${courseList.required ? "Compulsory" : "Elective"}</p>
 				<p>Course Credit: ${courseList.credit}</p>
 			</div>
 			<hr>
@@ -24,11 +26,7 @@ const View = (() => {
 		});
 		return tmp;
 	};
-	// const totalCredit = () => {
-	// 	let credit = 0;
-	// 	for ()
-	// }
-
+	
 	return {
 		domstr,
 		render,
@@ -52,9 +50,9 @@ const Model = ((api, view) => {
 		get courseList() {
 			return this.#courseList;
 		}
-		set courseList(newCourselist) {
-			this.#courseList = [...newCourselist];
-
+		
+		set courseList(newList) {
+			this.#courseList = [...newList];
 			const courseContainer = document.querySelector(view.domstr.courseContainer);
 			const tmp = view.createTmp(this.#courseList);
 			view.render(courseContainer, tmp);
@@ -62,7 +60,7 @@ const Model = ((api, view) => {
 	}
 
 	const { getCourses } = api;
-
+	
 	return {
 		getCourses,
 		Course,
@@ -73,28 +71,30 @@ const Model = ((api, view) => {
 /* ~~~~~~~~~~~~~~~~ Controller ~~~~~~~~~~~~~~~~ */
 const Controller = ((model, view) => {
 	const state = new model.State();
-
-	const selectCourses = () => {
-		const courseContainer = document.querySelector(view.domstr.courseContainer);
-		courseContainer.addEventListener("click", (event) => {
-				state.courseList = state.courseList.filter(
-					(course) => +course.id !== +event.target.id
-				);
-			model.selectCourses(+event.target.id);
+	
+	const selectedCourses = () => {
+		const course_container = document.querySelector(view.domstr.courseContainer);
+		course_container.addEventListener('click', (event) => {
+			if (event.key === 'click' && event.target.value.trim()) {
+				const addedCourse = new model.Course(event.target.value);
+				model.addcourse(addedCourse).then((course) => {
+					state.courseList = [course]
+			});
+			}
+			model.selectedCourses(event.target.id);
 		});
 	};
-
+	
 	const init = () => {
-		model.getCourses().then((courses) => {
-			state.courseList = [...courses];
+		model.getCourses().then((course) => {
+			state.courseList = [...course];
 		});
 	};
-
+	
 	const bootstrap = () => {
 		init();
-		selectCourses();
+		selectedCourses();
 	};
-
 	return {
 		bootstrap,
 	};
